@@ -117,7 +117,13 @@ def main():
         print()
         print(f"Total Contributed:       ${total_contributions:,.2f}")
         print(f"Total Earnings:          ${total_earnings:,.2f}")
-        print(f"Return on Investment:    {(total_earnings / total_contributions * 100):.2f}%")
+        
+        # Only calculate ROI if there were contributions (avoid division by zero)
+        if total_contributions > 0:
+            roi_percentage = (total_earnings / total_contributions * 100)
+            print(f"Return on Investment:    {roi_percentage:.2f}%")
+        else:
+            print(f"Return on Investment:    N/A (no contributions)")
         print()
         
     except ValueError as e:
